@@ -34,7 +34,7 @@
                         {
                                 title:"[{$oMediaUrl->oxmediaurls__oxdesc->value}]",
                                 free:true,
-                                mp3:"[{$oViewConf->getHomeLink()}]out/media/[{$oMediaUrl->oxmediaurls__oxurl->value}]"
+                                mp3:"[{$oViewConf->getBaseDir()}]out/media/[{$oMediaUrl->oxmediaurls__oxurl->value}]"
                         },
         [{/foreach}]
                 ], {
