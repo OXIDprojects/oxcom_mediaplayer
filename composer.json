@@ -1,5 +1,5 @@
 {
-  "name": "oxcom/mediaplayer-module",
+  "name": "oxid-projects/oxcom-mediaplayer",
   "description": "OXID Hackathon 2018 MediaPlayer",
   "type": "oxideshop-module",
   "keywords": ["oxid", "modules", "eShop"],
