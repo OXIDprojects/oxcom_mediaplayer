@@ -1,6 +1,6 @@
 <?php
 /**
- * Copyright © OXID eSales AG. All rights reserved.
+ * Copyright © OXID Community. All rights reserved.
  * See LICENSE file for license details.
  */
 
