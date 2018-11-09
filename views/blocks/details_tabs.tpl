@@ -50,7 +50,7 @@
                         autoBlur: true,
                         smoothPlayBar: true,
                         keyEnabled: true,
-                        audioFullScreen: false
+                        audioFullScreen: true
                 });
         });
         //]]>
