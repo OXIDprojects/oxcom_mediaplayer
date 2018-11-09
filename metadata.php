@@ -52,9 +52,9 @@ $aModule = array(
     'templates' => [],
     'blocks' => [
         [
-            'template' => 'deliveryset_main.tpl',
+            'template' => 'page/details/inc/tabs.tpl',
             'block'=>'details_tabs_longdescription',
-            'file'=>'/views/blocks/deliveryset_main.tpl'
+            'file'=>'/views/blocks/details_tabs.tpl'
         ],
     ],
     'settings' => []
