@@ -26,6 +26,7 @@ $aModule = array(
     'email'        => 'info@oxid-esales.com',
     'extend'       => [
         \OxidEsales\Eshop\Application\Component\Widget\ArticleDetails::class  => \OxCom\MediaplayerModule\Application\Component\Widget\ArticleDetails::class,
+        \OxidEsales\Eshop\Application\Model\Article::class => \OxCom\MediaplayerModule\Application\Model\Article ::class,
     ],
     'controllers' => [
     ],
@@ -38,10 +39,22 @@ $aModule = array(
         [
             'template' => 'page/details/inc/tabs.tpl',
             'block' => 'details_tabs_longdescription',
-            'file'=>  '/views/blocks/details_tabs.tpl'
+            'file'=>  '/Application/views/blocks/details_tabs.tpl'
+        ],
+        [
+            'template' => 'article_extend.tpl',
+            'block' => 'admin_article_extend_media',
+            'file'=>  '/Application/views/blocks/admin_article_extend_media.tpl'
         ],
     ],
-    'settings' => []
+    'settings' => [
+        [
+            'group' => 'oxcom_mediaplayer_settings',
+            'name'  => 'oxcomMediaplayerShow',
+            'type'  => 'bool',
+            'value' => 'false'
+        ],
+    ]
 );
 
 

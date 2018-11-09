@@ -1,4 +1,12 @@
-[{* $smarty.block.parent *}]
+[{if !isset($oConfig)}]
+    [{assign var="oConfig" value=$oViewConf->getConfig()}]
+[{/if}]
+
+[{if !$oConfig->getConfigParam('oxcomMediaplayerShow') || !$oDetailsProduct->showOxcomMediaPlayer()}]
+  [{$smarty.block.parent}]
+
+[{else}]
+
 [{oxhasrights ident="SHOWLONGDESCRIPTION"}]
     [{assign var="oLongdesc" value=$oDetailsProduct->getLongDescription()}]
     [{if $oLongdesc->value}]
@@ -107,3 +115,5 @@
     [{assign var="blFirstTab" value=false}]
     [{/if}]
 [{/oxhasrights}]
+
+[{/if}]

@@ -8,14 +8,36 @@ namespace OxCom\MediaplayerModule\Core;
 
 /**
  * Class Events
+ *
+ * @package OxCom\MediaplayerModule\Core
  */
 class Events
 {
+    /**
+     * Module database fields
+     *
+     * @var array
+     */
+    protected static $moduleDatabaseFields = [
+        'oxarticles' => [
+            'field' => 'enableOxcomPlayer',
+            'specification' => "tinyint(1) NOT NULL DEFAULT '1' COMMENT 'Player is active'"
+        ],
+        'oxmediaurls' => [
+            'field' => 'oxcomPlayerSort',
+            'specification' => " int(11) NOT NULL DEFAULT '0' COMMENT 'Sorting'"
+        ]
+    ];
+
     /**
      * Module activation script.
      */
     public static function onActivate()
     {
+        foreach (self::$moduleDatabaseFields as $table => $sub) {
+            self::addDatabaseField($table, $sub['field'], $sub['specification']);
+        }
+
         self::clearTmp();
     }
     /**
@@ -78,6 +100,25 @@ class Events
             } else {
                 self::clearTmp($filePath);
             }
+        }
+    }
+
+    /**
+     * Add module specific database field.
+     *
+     * @param string $table         Table name
+     * @param string $field         Field name
+     * @param string $specification Specification query part
+     */
+    protected static function addDatabaseField($table, $field, $specification)
+    {
+        $dbMetaDataHandler = oxNew(\OxidEsales\Eshop\Core\DbMetaDataHandler::class);
+
+        if (!$dbMetaDataHandler->fieldExists($field, $table)) {
+            $query = "ALTER TABLE `" . $table . "`" .
+                     " ADD `" . strtoupper($field) . "` " . $specification;
+            \OxidEsales\Eshop\Core\DatabaseProvider::getDb()->execute($query);
+            $dbMetaDataHandler->updateViews([$table]);
         }
     }
 }
