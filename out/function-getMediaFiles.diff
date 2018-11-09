@@ -1,0 +1,42 @@
+    /**
+     * Template variable getter. Returns media files of current product.
+     *
+     * @return array
+     */
+    public function getMediaFiles()
+    {   
+        if ($this->_aMediaFiles === null) {
+            $aMediaFiles = $this->getProduct()->getMediaUrls();
+            $this->_aMediaFiles = count($aMediaFiles) ? $aMediaFiles : false;
+        }
+
+        return $this->_aMediaFiles;
+    }   
+
+        public function guidoAlpha()
+        {
+                $thingy = $this->getMediaFiles();
+                $out = array();
+
+
+                foreach($thingy as $key => $object){
+                        $urlObj = $object->oxmediaurls__oxurl;
+                        $v = $urlObj->rawValue;
+                        if(in_array(strtolower(substr($v,-4)), array('.mp3', '.mp4'))){
+                                $out[$key] = $object;
+                        }
+
+                }
+
+                usort($out, array($this, "guidoBeta"));
+                if(!$out) return false;
+                return $out;
+        }
+
+        public function guidoBeta($a, $b)
+        {
+                return ($a->oxmediaurls__oxurl->rawValue > $b->oxmediaurls__oxurl->rawValue);
+        }
+
+
+
