@@ -31,16 +31,21 @@
                         jPlayer: "#jquery_jplayer_1",
                         cssSelectorAncestor: "#jp_container_1"
                 }, [
-        [{foreach from=$oView->fetchSortedMediaData() item=oMediaUrl}]
-                        {
-                                title:"[{$oMediaUrl->oxmediaurls__oxdesc->value}]",
-                                free:true,
-                                mp3:"[{$oViewConf->getBaseDir()}]out/media/[{$oMediaUrl->oxmediaurls__oxurl->value}]"
-                        },
-        [{/foreach}]
+
+                    [{assign var=allMediaUrls value=$oView->fetchSortedMediaData()}]
+                    [{foreach from=$allMediaUrls key=type item=result}]
+                        [{foreach from=$result item=mediaUrl}]
+                            {
+                            title:"[{$mediaUrl->getFieldData('oxdesc')}]",
+                            free:true,
+                            [{$type}]:"[{$oViewConf->getBaseDir()}]out/media/[{$mediaUrl->getFieldData('oxurl')}]"
+                            },
+                        [{/foreach}]
+                    [{/foreach}]
+
                 ], {
                         swfPath: "./js",
-                        supplied: "oga, mp3",
+                        supplied: "[{$oView->getSupportedFileExtensions()}]",
                         useStateClassSkin: true,
                         autoBlur: true,
                         smoothPlayBar: true,

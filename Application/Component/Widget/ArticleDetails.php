@@ -13,39 +13,57 @@ namespace OxCom\MediaplayerModule\Application\Component\Widget;
  */
 class ArticleDetails extends ArticleDetails_parent
 {
+    /**
+     * List of supported file extensions.
+     *
+     * @var array
+     */
+    protected $supportedFileExtensions = ['mp3', 'm4v', 'ogg', 'webm', 'wav'];
+
+    /**
+     *
+     *
+     * @return string
+     */
+    public function getSupportedFileExtensions()
+    {
+        return implode(', ', $this->supportedFileExtensions);
+    }
 
     /**
      * @return array|bool
      */
     public function fetchSortedMediaData()
     {
-        $thingy = $this->getMediaFiles();
-        $out = array();
+        $allFiles = $this->getMediaFiles();
+        $allFiles = is_null($allFiles) ? [] : $allFiles;
+        $return = [];
 
-        $thingy = is_null($thingy) ? [] : $thingy;
+        foreach($allFiles as $key => $mediaUrl){
+            $urlValue = $mediaUrl->getFieldData('oxurl');
+            $tmp = explode('.', $urlValue);
+            $extension = strtolower(array_pop($tmp));
 
-        foreach($thingy as $key => $object){
-            $urlObj = $object->oxmediaurls__oxurl;
-            $v = $urlObj->rawValue;
-            if(in_array(strtolower(substr($v,-4)), array('.mp3', '.mp4'))){
-                $out[$key] = $object;
+            if (in_array($extension, $this->supportedFileExtensions)) {
+                $return[$extension][$key] = $mediaUrl;
             }
-
         }
 
-        usort($out, array($this, "sortMediaFiles"));
-        if(!$out) return false;
-        return $out;
+        foreach (array_keys($return) as $type) {
+            usort($return[$type], array($this, 'sortMediaFiles'));
+        }
+
+        return $return;
     }
 
     /**
-     * @param $a
-     * @param $b
+     * @param \OxidEsales\Eshop\Application\Model\MediaUrl $first
+     * @param \OxidEsales\Eshop\Application\Model\MediaUrl $second
      *
      * @return bool
      */
-    protected function sortMediaFiles($a, $b)
+    protected function sortMediaFiles($first, $second)
     {
-        return ($a->getFieldData('oxurl') > $b->getFieldData('oxurl'));
+        return ($first->getFieldData('oxurl') > $second->getFieldData('oxurl'));
     }
 }
