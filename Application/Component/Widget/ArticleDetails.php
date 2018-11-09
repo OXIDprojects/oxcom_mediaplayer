@@ -18,7 +18,7 @@ class ArticleDetails extends ArticleDetails_parent
         $thingy = $this->getMediaFiles();
         $out = array();
 
-        $thingy = !is_array($thingy) ? [] : $thingy;
+        $thingy = is_null($thingy) ? [] : $thingy;
 
         foreach($thingy as $key => $object){
             $urlObj = $object->oxmediaurls__oxurl;
