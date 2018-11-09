@@ -36,16 +36,17 @@
                                 title:"[{$oMediaUrl->oxmediaurls__oxdesc->value}]",
                                 free:true,
                                 mp3:"[{$oViewConf->getBaseDir()}]out/media/[{$oMediaUrl->oxmediaurls__oxurl->value}]"
+                                m4v:"[{$oViewConf->getBaseDir()}]out/media/[{$oMediaUrl->oxmediaurls__oxurl->value}]"
                         },
         [{/foreach}]
                 ], {
                         swfPath: "./js",
-                        supplied: "oga, mp3",
+                        supplied: "oga, mp3, mp4, m4v",
                         useStateClassSkin: true,
                         autoBlur: true,
                         smoothPlayBar: true,
                         keyEnabled: true,
-                        audioFullScreen: false
+                        audioFullScreen: true
                 });
         });
         //]]>
