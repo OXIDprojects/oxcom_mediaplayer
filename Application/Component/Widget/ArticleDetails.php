@@ -13,7 +13,11 @@ namespace OxCom\MediaplayerModule\Application\Component\Widget;
  */
 class ArticleDetails extends ArticleDetails_parent
 {
-    public function guidoAlpha()
+
+    /**
+     * @return array|bool
+     */
+    public function fetchSortedMediaData()
     {
         $thingy = $this->getMediaFiles();
         $out = array();
@@ -29,13 +33,19 @@ class ArticleDetails extends ArticleDetails_parent
 
         }
 
-        usort($out, array($this, "guidoBeta"));
+        usort($out, array($this, "sortMediaFiles"));
         if(!$out) return false;
         return $out;
     }
 
-    public function guidoBeta($a, $b)
+    /**
+     * @param $a
+     * @param $b
+     *
+     * @return bool
+     */
+    protected function sortMediaFiles($a, $b)
     {
-        return ($a->oxmediaurls__oxurl->rawValue > $b->oxmediaurls__oxurl->rawValue);
+        return ($a->getFieldData('oxurl') > $b->getFieldData('oxurl'));
     }
 }

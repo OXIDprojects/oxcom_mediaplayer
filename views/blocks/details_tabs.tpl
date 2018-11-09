@@ -15,7 +15,7 @@
             [{/if}]
         </a>
         [{/if}]
-        [{if $oView->guidoAlpha() || $oDetailsProduct->oxarticles__oxfile->value}]
+        [{if $oView->fetchSortedMediaData() || $oDetailsProduct->oxarticles__oxfile->value}]
 
         [{oxstyle include=$oViewConf->getModuleUrl('oxcom/mediaplayer','out/css/jplayer/jplayer.blue.monday.min.css') priority=1}]
         [{oxscript include=$oViewConf->getModuleUrl('oxcom/mediaplayer','out/js/jplayer/jquery.min.js') priority=1}]
@@ -30,7 +30,7 @@
                         jPlayer: "#jquery_jplayer_1",
                         cssSelectorAncestor: "#jp_container_1"
                 }, [
-        [{foreach from=$oView->guidoAlpha() item=oMediaUrl}]
+        [{foreach from=$oView->fetchSortedMediaData() item=oMediaUrl}]
                         {
                                 title:"[{$oMediaUrl->oxmediaurls__oxdesc->value}]",
                                 free:true,
