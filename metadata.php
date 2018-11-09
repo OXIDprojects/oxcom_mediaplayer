@@ -34,7 +34,7 @@ $aModule = array(
         'de' => 'OXID Hackathon 2018 MediaPlayer',
         'en' => 'OXID Hackathon 2018 MediaPlayer',
     ),
-    'thumbnail'    => 'logo.jpg',
+    'thumbnail'    => 'logo.png',
     'version'      => '0.0.1',
     'author'       => 'OXID Hackathon 2018',
     'url'          => '',
