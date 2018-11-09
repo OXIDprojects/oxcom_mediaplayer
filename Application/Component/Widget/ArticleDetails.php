@@ -21,6 +21,28 @@ class ArticleDetails extends ArticleDetails_parent
     protected $supportedFileExtensions = ['mp3', 'm4v', 'ogg', 'webm', 'wav'];
 
     /**
+     * Sorted media urls.
+     *
+     * @var array
+     */
+    protected $sortedMediaFiles = null;
+
+    /**
+     * Template variable getter. Returns media files of current product.
+     *
+     * @return array
+     */
+    public function getSortedMediaFiles()
+    {
+        if ($this->sortedMediaFiles === null) {
+            $sortedMediaFiles = $this->getProduct()->getSortedMediaUrls();
+            $this->sortedMediaFiles = count($sortedMediaFiles) ? $sortedMediaFiles : false;
+        }
+
+        return $this->sortedMediaFiles;
+    }
+
+    /**
      *
      *
      * @return string
@@ -35,7 +57,7 @@ class ArticleDetails extends ArticleDetails_parent
      */
     public function fetchSortedMediaData()
     {
-        $allFiles = $this->getMediaFiles();
+        $allFiles = $this->getSortedMediaFiles();
         $allFiles = is_null($allFiles) ? [] : $allFiles;
         $return = [];
 
@@ -49,21 +71,6 @@ class ArticleDetails extends ArticleDetails_parent
             }
         }
 
-        foreach (array_keys($return) as $type) {
-            usort($return[$type], array($this, 'sortMediaFiles'));
-        }
-
         return $return;
-    }
-
-    /**
-     * @param \OxidEsales\Eshop\Application\Model\MediaUrl $first
-     * @param \OxidEsales\Eshop\Application\Model\MediaUrl $second
-     *
-     * @return bool
-     */
-    protected function sortMediaFiles($first, $second)
-    {
-        return ($first->getFieldData('oxurl') > $second->getFieldData('oxurl'));
     }
 }

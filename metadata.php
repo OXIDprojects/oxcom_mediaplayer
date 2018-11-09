@@ -26,7 +26,8 @@ $aModule = array(
     'email'        => 'info@oxid-esales.com',
     'extend'       => [
         \OxidEsales\Eshop\Application\Component\Widget\ArticleDetails::class  => \OxCom\MediaplayerModule\Application\Component\Widget\ArticleDetails::class,
-        \OxidEsales\Eshop\Application\Model\Article::class => \OxCom\MediaplayerModule\Application\Model\Article ::class,
+        \OxidEsales\Eshop\Application\Model\Article::class => \OxCom\MediaplayerModule\Application\Model\Article::class,
+        \OxidEsales\Eshop\Application\Controller\Admin\ArticleExtend::class => \OxCom\MediaplayerModule\Application\Controller\Admin\ArticleExtend::class,
     ],
     'controllers' => [
     ],
@@ -53,6 +54,13 @@ $aModule = array(
             'name'  => 'oxcomMediaplayerShow',
             'type'  => 'bool',
             'value' => 'false'
+        ],
+        [
+            'group'      => 'oxcom_mediaplayer_settings',
+            'name'       => 'oxcomMediaplayerSortField',
+            'type'       => 'select',
+            'constrains' => 'oxcomplayersort|oxurl|oxdesc|oxtimestamp',
+            'value'      => 'oxcomplayersort'
         ],
     ]
 );
