@@ -16,10 +16,11 @@
         </a>
         [{/if}]
         [{if $oView->guidoAlpha() || $oDetailsProduct->oxarticles__oxfile->value}]
-        [{oxstyle include="css/jplayer/jplayer.blue.monday.min.css" priority=1}]
-[{oxscript include="js/jplayer/jquery.min.js" priority=1}]
-[{oxscript include="js/jplayer/jquery.jplayer.min.js" priority=1}]
-[{oxscript include="js/jplayer/jplayer.playlist.min.js" priority=1}]
+
+        [{oxstyle include=$oViewConf->getModuleUrl('oxcom/mediaplayer','out/css/jplayer/jplayer.blue.monday.min.css' priority=1}]
+        [{oxscript include=$oViewConf->getModuleUrl('oxcom/mediaplayer','out/js/jplayer/jquery.min.js' priority=1}]
+        [{oxscript include=$oViewConf->getModuleUrl('oxcom/mediaplayer','out/js/jplayer/jquery.jplayer.min.js' priority=1}]
+        [{oxscript include=$oViewConf->getModuleUrl('oxcom/mediaplayer','out/js/jplayer/jplayer.playlist.min.js' priority=1}]
 
 [{capture name="jplayerdata"}]
         //<![CDATA[

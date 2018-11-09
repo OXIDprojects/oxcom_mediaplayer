@@ -41,7 +41,7 @@ $aModule = array(
     'email'        => 'info@oxid-esales.com',
     'extend'       => [
        // \OxidEsales\Eshop\Core\ViewConfig::class                              => \OxCom\MediaplayerModule\Core\ViewConfig::class,
-       // \OxidEsales\Eshop\Application\Component\Widget\ArticleDetails::class  => \OxCom\MediaplayerModule\Component\Widget\ArticleDetails::class,
+        \OxidEsales\Eshop\Application\Component\Widget\ArticleDetails::class  => \OxCom\MediaplayerModule\Application\Component\Widget\ArticleDetails::class,
     ],
     'controllers' => [
     ],
@@ -53,8 +53,8 @@ $aModule = array(
     'blocks' => [
         [
             'template' => 'page/details/inc/tabs.tpl',
-            'block'=>'details_tabs_longdescription',
-            'file'=>'/views/blocks/details_tabs.tpl'
+            'block' => 'details_tabs_longdescription',
+            'file'=>  '/views/blocks/details_tabs.tpl'
         ],
     ],
     'settings' => []
