@@ -38,7 +38,7 @@
                             {
                             title:"[{$mediaUrl->getFieldData('oxdesc')}]",
                             free:true,
-                            [{$type}]:"[{$oViewConf->getBaseDir()}]out/media/[{$mediaUrl->getFieldData('oxurl')}]"
+                            [{$type}]:"[{$mediaUrl->getLink()}]"
                             },
                         [{/foreach}]
                     [{/foreach}]
