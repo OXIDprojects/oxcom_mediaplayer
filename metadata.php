@@ -53,7 +53,7 @@ $aModule = array(
             'group' => 'oxcom_mediaplayer_settings',
             'name'  => 'oxcomMediaplayerShow',
             'type'  => 'bool',
-            'value' => 'false'
+            'value' => 'true'
         ],
         [
             'group'      => 'oxcom_mediaplayer_settings',
