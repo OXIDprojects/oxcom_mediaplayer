@@ -18,7 +18,12 @@ class ArticleDetails extends ArticleDetails_parent
      *
      * @var array
      */
-    protected $supportedFileExtensions = ['mp3', 'm4v', 'ogg', 'webm', 'wav'];
+    protected $groupedFiles = [
+        'm4v'  => [],
+        'mp3'  => [],
+        'wav'  => [],
+        'ogg'  => []
+    ];
 
     /**
      * Sorted media urls.
@@ -43,13 +48,22 @@ class ArticleDetails extends ArticleDetails_parent
     }
 
     /**
+     * Get supported file extensions for template
      *
+     * @return string
+     */
+    public function getSupportedFileExtensionsForDisplay()
+    {
+        return implode(', ', $this->getSupportedFileExtensions());
+    }
+    /**
+     * Get supported file extensions for template
      *
      * @return string
      */
     public function getSupportedFileExtensions()
     {
-        return implode(', ', $this->supportedFileExtensions);
+        return array_keys($this->groupedFiles);
     }
 
     /**
@@ -59,14 +73,14 @@ class ArticleDetails extends ArticleDetails_parent
     {
         $allFiles = $this->getSortedMediaFiles();
         $allFiles = is_null($allFiles) ? [] : $allFiles;
-        $return = [];
+        $return = $this->groupedFiles;
 
         foreach($allFiles as $key => $mediaUrl){
             $urlValue = $mediaUrl->getFieldData('oxurl');
             $tmp = explode('.', $urlValue);
             $extension = strtolower(array_pop($tmp));
 
-            if (in_array($extension, $this->supportedFileExtensions)) {
+            if (in_array($extension, $this->getSupportedFileExtensions())) {
                 $return[$extension][$key] = $mediaUrl;
             }
         }

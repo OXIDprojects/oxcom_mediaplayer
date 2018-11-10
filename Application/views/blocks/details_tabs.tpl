@@ -53,7 +53,7 @@
 
                 ], {
                         swfPath: "./js",
-                        supplied: "[{$oView->getSupportedFileExtensions()}]",
+                        supplied: "[{$oView->getSupportedFileExtensionsForDisplay()}]",
                         useStateClassSkin: true,
                         autoBlur: true,
                         smoothPlayBar: true,
