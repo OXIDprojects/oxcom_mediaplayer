@@ -1,50 +1,14 @@
-
-.jp-audio {
-	width:auto;
+.jp-video-270p, .jp-jplayer, .jp-jplayer audio, .jp_poster_0, .jquery_jplayer_1 {
+    width: 100% !important;
+    height: auto !important;
 }
 
-.jp-controls button {
-        padding: 0px 0px;
+#jp_video_0, #jp_audio_0 {
+    height: 100% !important;
+    width: 100% !important;
 }
 
-.jp-toggles button {
-        padding: 0px 0px;
+#jp_poster_0 {
+    display: none !important;
 }
 
-.jp-volume-controls button {
-        padding: 0px 0px;
-}
-
-div.jp-playlist > ul > li {
-    list-style: inside square;
-}
-
-.jp-playlist li {
-   padding: 5px 0 4px 10px;
-}
-
-div.jp-type-playlist div.jp-playlist li.jp-playlist-current {
-   padding-left: 10px;
-}
-
-div.jp-type-playlist div.jp-playlist li:last-child {
-   padding: 5px 0 5px 10px;
-
-.video-container {
-    position: relative;
-    padding-bottom: 56.25%;
-    padding-top: 30px;
-    height: 0;
-    overflow: hidden;
-}
-
-.video-container iframe,
-.video-container object,
-.video-container embed {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-}
-}
