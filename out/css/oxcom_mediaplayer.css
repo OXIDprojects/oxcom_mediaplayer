@@ -12,3 +12,32 @@
     display: none !important;
 }
 
+@media only screen and (max-width: 450px) {
+.jp-controls {
+    width: 145px !important;
+    padding: 20px 0px 0px 10px !important;
+}
+
+.jp-progress {
+    width: 100px !important;
+    left:  150px !important;
+}
+
+.jp-stop {
+    margin-left: 7px !important;
+}
+
+.jp-time-holder {
+    left: 150px !important;
+    width: 98px !important;
+}
+
+.jp-current-time, .jp-duration {
+    width: 40px !important;
+}
+
+.jp-toggles {
+    display: none !important;
+}
+}
+
