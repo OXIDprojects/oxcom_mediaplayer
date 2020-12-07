@@ -59,7 +59,7 @@ $aModule = array(
             'group'      => 'oxcom_mediaplayer_settings',
             'name'       => 'oxcomMediaplayerSortField',
             'type'       => 'select',
-            'constrains' => 'oxcomplayersort|oxurl|oxdesc|oxtimestamp',
+            'constraints' => 'oxcomplayersort|oxurl|oxdesc|oxtimestamp',
             'value'      => 'oxcomplayersort'
         ],
     ]
